@@ -9,6 +9,8 @@ import './database/connection';
 import routes from './routes';
 import errorHandler from './errors/handler';
 
+const PORT : string|number = process.env.PORT || 5000;
+
 const app = express();
 
 app.use(cors());
@@ -17,7 +19,7 @@ app.use(routes);
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')))
 app.use(errorHandler);
 
-app.listen(80);
+app.listen(PORT,() => console.log(`hosting @${PORT}`));
 
 /*
 
